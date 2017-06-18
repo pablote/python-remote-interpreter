@@ -16,7 +16,7 @@ RUN mkdir /root/.ssh \
   && chmod -R 700 /root/.ssh \
   && echo "StrictHostKeyChecking=no" >> /etc/ssh/ssh_config \
   && mkdir /var/run/sshd \
-  && tar -xzvf /root/helpers.tgz -C /root/.pycharm_helpers
+  && tar -xzvf /root/helpers.tgz -C /root/.pycharm_helpers \
   && service ssh start \
   && update-rc.d ssh defaults
 

@@ -4,7 +4,8 @@ USER root
 RUN apt-get update \
   && apt-get install -y python python3 python-pip python3-pip wget openssh-server tar vim \
   && echo "root:training" | chpasswd \
-  && sed -i 's/prohibit-password/yes/' /etc/ssh/sshd_config
+  && sed -i 's/prohibit-password/yes/' /etc/ssh/sshd_config \
+  && mkdir /root/.pycharm_helpers
 
 #ADD ssh.tar /root/
 ADD start.sh /

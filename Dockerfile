@@ -2,7 +2,7 @@ FROM ubuntu
 USER root
 
 RUN apt-get update \
-  && apt-get install -y python python3 python-pip python3-pip wget openssh-server tar vim \
+  && apt-get install -y python python3 python-pip python3-pip python-tk python3-tk wget openssh-server tar vim \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* \
   && echo "root:training" | chpasswd \

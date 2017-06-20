@@ -3,6 +3,8 @@ USER root
 
 RUN apt-get update \
   && apt-get install -y python python3 python-pip python3-pip wget openssh-server tar vim \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* \
   && echo "root:training" | chpasswd \
   && sed -i 's/prohibit-password/yes/' /etc/ssh/sshd_config \
   && mkdir /root/.pycharm_helpers

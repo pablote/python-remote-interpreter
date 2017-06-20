@@ -9,17 +9,14 @@ RUN apt-get update \
 
 #ADD ssh.tar /root/
 ADD start.sh /
+ADD helpers/helpers.tgz /root/.pycharm_helpers
 ADD helpers/build.txt /root/.pycharm_helpers
-ADD helpers/helpers.tgz /root/
 
 RUN mkdir /root/.ssh \
   && chown -R root:root /root/.ssh \
   && chmod -R 700 /root/.ssh \
   && echo "StrictHostKeyChecking=no" >> /etc/ssh/ssh_config \
-  && mkdir /var/run/sshd \
-  && tar -xzvf /root/helpers.tgz -C /root/.pycharm_helpers \
-  && service ssh start \
-  && update-rc.d ssh defaults
+  && mkdir /var/run/sshd
 
 EXPOSE 22
-CMD bash /start.sh
+CMD service ssh start && bash /start.sh
